@@ -15,8 +15,8 @@
 ## Run
 
     # Start container and step into it
-    docker compose up -d dev
-    docker exec -it dev /bin/bash
+    docker compose up -d freecad
+    docker exec -it freecad /bin/bash
 
     # Run executable inside container
-    /mnt/FreeCAD/bin/FreeCAD
+    /mnt/FreeCAD/build/bin/FreeCAD
