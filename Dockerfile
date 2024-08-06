@@ -70,6 +70,7 @@ COPY ./FreeCAD /mnt/FreeCAD
 
 WORKDIR /mnt/FreeCAD
 
-RUN mkdir build \
+RUN mkdir -p build \
+    && cd build \
     && cmake .. \
     && make -j4
