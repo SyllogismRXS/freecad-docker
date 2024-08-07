@@ -68,9 +68,9 @@ RUN apt-get update \
 
 COPY ./FreeCAD /mnt/FreeCAD
 
-WORKDIR /mnt/FreeCAD
-
-RUN mkdir -p build \
-    && cd build \
-    && cmake .. \
+# Build outside of the FreeCAD source tree, so we can mount it later and the
+# build files aren't mounted over
+RUN mkdir -p /mnt/build
+WORKDIR /mnt/build
+RUN cmake /mnt/FreeCAD \
     && make -j4
