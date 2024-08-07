@@ -19,7 +19,10 @@ services:
        - /tmp/.X11-unix:/tmp/.X11-unix:rw # Connect X11
        - .docker.xauth:/tmp/.docker.xauth # Provide the generated xauth file
        - ./FreeCAD:/mnt/FreeCAD
-       - ./build:/mnt/build
+       - FreeCAD-build:/mnt/build
+       - FreeCAD-UserAppData:/root/.local/share/FreeCAD
+       - FreeCAD-config:/root/.config/FreeCAD
+       - ./files:/mnt/files
 
   freecad-nvidia:
     image: syllo/freecad:dev
@@ -40,4 +43,30 @@ services:
        - /tmp/.X11-unix:/tmp/.X11-unix:rw # Connect X11
        - .docker.xauth:/tmp/.docker.xauth # Provide the generated xauth file
        - ./FreeCAD:/mnt/FreeCAD
-       - ./build:/mnt/build
+       - FreeCAD-build:/mnt/build
+       - FreeCAD-UserAppData:/root/.local/share/FreeCAD
+       - FreeCAD-config:/root/.config/FreeCAD
+       - ./files:/mnt/files
+
+
+volumes:
+  FreeCAD-build:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ./build
+
+  FreeCAD-UserAppData:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ./UserAppData
+
+  FreeCAD-config:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ./config

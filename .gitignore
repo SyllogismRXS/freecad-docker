@@ -2,3 +2,6 @@ FreeCAD
 .env
 .docker.xauth
 build
+files
+UserAppData
+config
