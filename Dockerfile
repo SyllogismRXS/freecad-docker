@@ -61,7 +61,8 @@ RUN apt-get update \
     qtbase5-dev \
     qttools5-dev \
     swig \
-    libyaml-cpp-dev
+    libyaml-cpp-dev \
+    && rm -rf /var/lib/apt/lists/*
 
 # Not included
 # python3-pyside2uic
@@ -74,3 +75,5 @@ RUN mkdir -p /mnt/build
 WORKDIR /mnt/build
 RUN cmake /mnt/FreeCAD \
     && make -j4
+
+CMD ["/mnt/build/bin/FreeCAD"]
